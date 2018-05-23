@@ -9,9 +9,10 @@
 import UIKit
 
 class FoodTableViewController: UITableViewController {
-    var foodStoreNames = ["늘해랑", "번개반점", "아딸", "왕짜장", "토마토"]
-    var foodStoreImages = ["01", "02", "03", "04", "05"]
-    var foodStoreAddress = ["부산시 양정동", "부산시 양정동", "부산시 양정동", "부산시 양정동", "부산시 양정동"]
+    var foodStoreNames = ["늘해랑", "번개반점", "아딸", "왕짜장", "토마토","홍콩반점"]
+    var foodStoreImages = ["01", "02", "03", "04", "05","06"]
+    var foodStoreAddress = ["부산시 양정동", "부산시 양정동", "부산시 양정동", "부산시 양정동", "부산시 양정동","부산시 양정동"]
+    var foodStoreType = ["돼지국밥", "중국집", "분식집", "중국집","도시락","중국집"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,7 @@ class FoodTableViewController: UITableViewController {
         cell.foodImage.image = UIImage(named: foodStoreImages[indexPath.row])
         cell.nameLabel.text = foodStoreNames[indexPath.row]
         cell.locationLabel.text = foodStoreAddress[indexPath.row]
+        cell.typeLabel.text = foodStoreType[indexPath.row]
         
         return cell
     }
