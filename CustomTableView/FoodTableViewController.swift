@@ -16,7 +16,8 @@ class FoodTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "DIT 배달배달"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -52,7 +53,36 @@ class FoodTableViewController: UITableViewController {
         
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        print(foodStoreNames[indexPath.row])
+        
+        let optionMenu = UIAlertController(title: nil, message: "뭘 원하시나요?", preferredStyle:.actionSheet)
+        // call action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let callAction = UIAlertAction(title: "전화걸기", style: .default){
+            (action: UIAlertAction) -> Void in
+            print("전화걸기 실행!!!!")
+            let alertMessage = UIAlertController(title: "현재 서비스 구축중", message: "죄송합니다", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertMessage.addAction(okAction)
+            self.present(alertMessage, animated: true)
+        }
+        
+        // check - in action
+        let checkinAction = UIAlertAction(title: "Check in", style: .default){
+            (action: UIAlertAction) -> Void in
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = .checkmark
+        }
+        
+        optionMenu.addAction(cancelAction)
+        optionMenu.addAction(callAction)
+        optionMenu.addAction(checkinAction)
+        present(optionMenu, animated: true)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

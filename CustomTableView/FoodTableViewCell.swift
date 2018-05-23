@@ -9,7 +9,13 @@
 import UIKit
 
 class FoodTableViewCell: UITableViewCell {
-    @IBOutlet weak var foodImage: UIImageView!
+    @IBOutlet weak var foodImage: UIImageView!{
+        didSet{
+            foodImage.layer.cornerRadius = 10.0
+            foodImage.clipsToBounds = true
+        }
+    }
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
