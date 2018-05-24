@@ -74,13 +74,25 @@ class FoodTableViewController: UITableViewController {
         let checkinAction = UIAlertAction(title: "Check in", style: .default){
             (action: UIAlertAction) -> Void in
             let cell = tableView.cellForRow(at: indexPath)
+            
             cell?.accessoryType = .checkmark
+            
+        }
+        
+        let unDoCheckinAction = UIAlertAction(title: "Check out", style: .default){
+            (action: UIAlertAction) -> Void in
+            let cell = tableView.cellForRow(at: indexPath)
+            
+            cell?.accessoryType = .none
+            
         }
         
         optionMenu.addAction(cancelAction)
         optionMenu.addAction(callAction)
         optionMenu.addAction(checkinAction)
+        optionMenu.addAction(unDoCheckinAction)
         present(optionMenu, animated: true)
+        
     }
     
     /*
